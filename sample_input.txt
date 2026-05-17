@@ -1,0 +1,12 @@
+movies.txt
+M001,The Grand Illusion,Drama,1937
+M002,Avengers,Action,2012
+M003,Frozen,Animation,2013
+
+ratings.txt
+RT01,M001,U10,4
+RT02,M001,U11,5
+RT03,M002,U12,3
+RT04,M003,U13,5
+RT05,M999,U14,4
+RT06,M001,U15,0

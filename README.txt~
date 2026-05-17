@@ -1,0 +1,30 @@
+Project Title:
+Movie Genre Rating Analysis using Hadoop MapReduce
+
+Description:
+This project analyzes movie ratings by genre using Hadoop MapReduce and Distributed Cache.
+
+Input Files:
+1. movies.txt
+2. ratings_1gb.txt
+
+Output:
+genre    ratingCount    avgRating    fiveStarCount
+
+Implemented Classes:
+- CacheMapper.java
+- CacheReducer.java
+- CacheDriver.java
+
+Features:
+- Distributed Cache
+- HashMap lookup
+- Data validation
+- Hadoop counters
+- 1GB dataset processing
+
+Execution Command:
+hadoop jar task5.jar CacheDriver \
+/user/hadoop/Project_BigData_task5/ratings_1gb.txt \
+/user/hadoop/Project_BigData_task5/output_task5_no_combiner \
+/user/hadoop/Project_BigData_task5/movies.txt

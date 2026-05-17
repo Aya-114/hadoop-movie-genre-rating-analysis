@@ -1,0 +1,5 @@
+Assumptions:
+1. movies.txt is small enough to fit into memory.
+2. Ratings must be integers between 1 and 5.
+3. Invalid and malformed lines are skipped.
+4. Unknown movieIds are emitted as UNKNOWN.
