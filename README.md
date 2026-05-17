@@ -41,8 +41,11 @@ The solution is optimized for scalable distributed processing and large datasets
 
 movieId, title, genre, releaseYear
 
-Example:
+### Example
+
+```txt
 M001, The Grand Illusion, Drama, 1937
+```
 
 ---
 
@@ -50,19 +53,26 @@ M001, The Grand Illusion, Drama, 1937
 
 ratingId, movieId, userId, rating
 
-Example:
+### Example
+
+```txt
 RT01, M001, U10, 4
+```
 
 ---
 
 # 📤 Output Example
 
+```txt
 Comedy    3    4.00    1
 Drama     5    4.00    2
+```
 
-Format:
+### Output Format
 
+```txt
 genre | ratingCount | avgRating | fiveStarCount
+```
 
 ---
 
@@ -70,12 +80,15 @@ genre | ratingCount | avgRating | fiveStarCount
 
 ## CacheMapper.java
 
-* Loads movie metadata into HashMap during setup()
+* Loads movie metadata into HashMap during `setup()`
 * Extracts genre using movieId lookup
 * Emits:
+
+  ```txt
   (genre, rating)
-* Emits UNKNOWN for missing movieIds
-* Rejects invalid ratings outside 1–5
+  ```
+* Emits `UNKNOWN` for missing movieIds
+* Rejects invalid ratings outside range `1–5`
 
 ---
 
@@ -84,11 +97,14 @@ genre | ratingCount | avgRating | fiveStarCount
 * Aggregates ratings for each genre
 * Calculates:
 
-  * ratingCount
-  * averageRating
-  * fiveStarCount
+  * `ratingCount`
+  * `averageRating`
+  * `fiveStarCount`
 * Formats average rating using:
+
+  ```java
   String.format("%.2f", ...)
+  ```
 
 ---
 
@@ -96,7 +112,7 @@ genre | ratingCount | avgRating | fiveStarCount
 
 * Configures MapReduce job
 * Registers DistributedCache file
-* Sets reducers to 1
+* Sets reducers to `1`
 * Defines input/output paths
 
 ---
@@ -115,6 +131,7 @@ genre | ratingCount | avgRating | fiveStarCount
 
 # 📁 Project Structure
 
+```txt
 movie-genre-rating-analysis/
 │
 ├── code/
@@ -129,8 +146,9 @@ movie-genre-rating-analysis/
 ├── sample_input.txt
 ├── sample_output.txt
 ├── assumptions.txt
-├── README.txt
+├── README.md
 └── task5.jar
+```
 
 ---
 
@@ -138,15 +156,21 @@ movie-genre-rating-analysis/
 
 ## Compile
 
+```bash
 javac -classpath `hadoop classpath` *.java
+```
 
 ## Create JAR
 
+```bash
 jar cf task5.jar *.class
+```
 
 ## Run Hadoop Job
 
+```bash
 hadoop jar task5.jar CacheDriver movies.txt input output
+```
 
 ---
 
@@ -160,7 +184,7 @@ The project handles:
 * Unknown movie IDs
 * Non-numeric values
 
-Invalid records are skipped and logged using Hadoop counters and LOG.warn.
+Invalid records are skipped and logged using Hadoop counters and `LOG.warn`.
 
 ---
 
@@ -175,11 +199,11 @@ The project generates:
 
 ---
 
-# 👩‍💻 Developed By
+# 👩‍💻 Team Members
 
-Aya Alaa
-Asmaa Mohamed 
-Doha Mohamed
-Ahmed Aymen
-Marina Ashraf
-Sara Mohamed
+* Aya Alaa
+* Asmaa Mohamed
+* Doha Mohamed
+* Ahmed Aymen
+* Marina Ashraf
+* Sara Mohamed
